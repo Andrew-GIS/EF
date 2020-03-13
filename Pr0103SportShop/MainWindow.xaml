@@ -1,0 +1,93 @@
+﻿<Window x:Class="Pr0103SportShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local1="clr-namespace:Pr0103SportShop.View"
+        xmlns:model ="clr-namespace:SportShop.DAL.Model;assembly=SportShop.DAL"
+        xmlns:viewmodel ="clr-namespace:Pr0103SportShop.ViewModel"
+        mc:Ignorable="d"
+        Title="Sport Shop" Height="600" Width="1000">
+
+    <Window.DataContext>
+        <viewmodel:ProductViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate x:Key="SportTemplate" DataType="{x:Type model:Product}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=Image}" Width="100" Height="100"></Image>
+                <Label Content="{Binding Path=ProductName}"></Label>
+                <Label Content="{Binding Path=ProductModel}"></Label>
+                <Label Content="{Binding Path=Price}"></Label>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--List of Sport Product-->
+        <StackPanel Grid.Column="0"
+                     Margin="20,30,20,0"
+                    Orientation="Vertical">
+            <Label Padding="5"
+                   FontSize="30">Products:</Label>
+            <ListBox x:Name="listOfProducts"
+                 Padding="5"
+                 BorderThickness="2"
+                 Height="Auto"
+                 
+                 ItemsSource="{Binding Products}"
+                 ItemTemplate="{StaticResource SportTemplate}"
+                 SelectedItem="{Binding SelectedProduct}" 
+                 ></ListBox>
+        </StackPanel>
+
+        <!--BUttons to Remove Product and to Default Values-->
+
+        <Button x:Name="addButton"
+                Content="Add"
+                Padding="10"
+                Grid.Column="0" Grid.Row="1"
+                Margin="30,10,300,10"
+                Command="{Binding AddCommand}"
+                ></Button>
+
+        <Button x:Name="saveButton"
+                Content="Save"
+                Padding="10"
+                Grid.Column="0" Grid.Row="1"
+                Margin="250,10,50,10"
+                Command="{Binding SaveCommand}"
+                ></Button>
+
+        <Button x:Name="delButton"
+                Content="Delete"
+                Padding="10"
+                Grid.Column="1" Grid.Row="1"
+                Margin="30,10,300,10"
+                Command="{Binding RemoveCommand}"
+                ></Button>
+
+        <Button x:Name="defoltButton"
+                Grid.Column="1" Grid.Row="1"
+                Content="Defolte"
+                Padding="10"
+                Margin="300,10,30,10"
+                Command="{Binding DefaultCommand}"
+                />
+
+        <!--Sport Product Control-->
+        <local1:ProductInfo Grid.Column="1" Margin="20"
+                            DataContext="{Binding ElementName=listOfProducts, Path= SelectedItem}"></local1:ProductInfo>
+    </Grid>
+</Window>
