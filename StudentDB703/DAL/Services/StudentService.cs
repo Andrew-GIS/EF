@@ -15,7 +15,12 @@ namespace DAL.Services
 
         public IEnumerable<Student> GetStudents()
         {
-            return this.context.Students.Include(s => s.Books).Include(s => s.Addresses);
+            return this.context.Students.Include(s => s.Books).Include(s => s.Address);
+            //.Include(s => s.Address)
+            //this.context.Students.Include(s => s.StudentAddress);
+
+
+            //return this.context.Students.Include(s => s.Books).Include(s => s.StudentAddress);
         }
 
         public void SaveStudents()

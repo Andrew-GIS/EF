@@ -14,6 +14,7 @@ namespace DAL.Model
         public string PhoneNumber { get; set; }
 
         public ObservableCollection<Book> Books { get; set; }
-        public ObservableCollection<Address> Addresses { get; set; }
+        
+        public Address Address { get; set; }
     }
 }

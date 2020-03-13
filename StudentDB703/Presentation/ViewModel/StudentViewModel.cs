@@ -12,10 +12,10 @@ namespace Presentation.ViewModel
         private ObservableCollection<Student> students;
         private Student selectedStudent;
         private readonly IStudentService studentService;
-        private ObservableCollection<Book> books;
+        //private ObservableCollection<Book> books;
         private Book selectedBook;
         private int booksCount;
-        private ObservableCollection<Address> addresses;
+        //private ObservableCollection<Address> addresses;
         private Address selectedAddress;
         
 
