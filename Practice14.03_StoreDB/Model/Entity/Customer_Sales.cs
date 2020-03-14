@@ -23,7 +23,7 @@ namespace Model.Entity
 
         public string State { get; set; }
 
-        public int ZipDode { get; set; }
+        public int ZipCode { get; set; }
 
         public ObservableCollection<Order_Sales> Orders { get; set; }
     }

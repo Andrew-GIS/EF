@@ -10,7 +10,7 @@ namespace Model
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"database = SomeStoreDB14.3; Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"database = SomeStoreDB14.3-version2; Trusted_Connection=true");
         }
 
         public DbSet<Customer_Sales> Customers { get; set; }
@@ -55,7 +55,7 @@ namespace Model
                 .Property(p => p.State)
                 .HasColumnName("state");
             modelBuilder.Entity<Customer_Sales>()
-                .Property(p => p.ZipDode)
+                .Property(p => p.ZipCode)
                 .HasColumnName("zip_code");
 
             //Customer-Order connection
@@ -166,6 +166,8 @@ namespace Model
             modelBuilder.Entity<Staff_Sales>()
                 .Property(p => p.ManagerId)
                 .HasColumnName("manager_id");
+            //modelBuilder.Entity<Staff_Sales>()
+            //    .Property(p => p.ManagerId).IsOptional();
 
             //Staff-Store connection
             modelBuilder.Entity<Staff_Sales>()
@@ -286,6 +288,68 @@ namespace Model
             modelBuilder.Entity<Brand_Prod>()
                 .Property(p => p.BrandName)
                 .HasColumnName("brand_name");
+
+            //
+            //Seed
+            //
+            #region CustomerSeed
+            modelBuilder.Entity<Customer_Sales>().HasData(
+                new Customer_Sales() { Id = 1, FirstName = "Andrew", LastName = "Fedorchenko", Phone = "0500505026", Email = "a.fedorchenko@intetics.com", Street = "Gogolya", City = "Kharkiv", State = "NorthEast", ZipCode = 64000},
+                new Customer_Sales() { Id = 2, FirstName = "Anna", LastName = "Kolomietc", Phone = "095959523", Email = "a.kolomietc@boing.com", Street = "Vilisova", City = "Kiev", State = "Central", ZipCode = 10000});
+            #endregion
+
+            #region OrderSeed
+            modelBuilder.Entity<Order_Sales>().HasData(
+                new Order_Sales() { Id = 1, CustomerId = 1, OrderStatus = "Delivered", OrderDate = new DateTime(2019, 12, 01), RequiredDate = new DateTime(2020, 1, 1), ShippedDate = new DateTime(2019, 12, 19), StoreId = 1, StaffId = 1 },
+                new Order_Sales() { Id = 2, CustomerId = 2, OrderStatus = "In Processing", OrderDate = new DateTime(2020, 03, 01), RequiredDate = new DateTime(2020, 4, 1), ShippedDate = new DateTime(2020, 03, 19), StoreId = 2, StaffId = 2 });
+            #endregion
+
+            #region OrderItemSeed
+            modelBuilder.Entity<OrderItem_Sales>().HasData(
+                new OrderItem_Sales() {OrderItemId = 1, ProductId = 1, Quantity=1, ListPrice=50.2M , Discount=10  },
+                new OrderItem_Sales() {OrderItemId = 2, ProductId = 2, Quantity=2, ListPrice=25.2M , Discount=5 });
+            #endregion
+
+            #region StaffSeed
+            modelBuilder.Entity<Staff_Sales>().HasData(
+                new Staff_Sales() {Id = 1, FirstName = "Nikolay", LastName="Kramorenko", Email = "n.kramorenko@intetics.com", Phone = "0502631248", Active = true, StoreId = 1, ManagerId = 1 },
+                new Staff_Sales() { Id = 2, FirstName = "Lola", LastName = "Gurchenko", Email = "l.gurchenko@intetics.com", Phone = "0507879768", Active = true, StoreId = 2, ManagerId = 1 });
+            #endregion
+
+            #region StoreSeed
+            modelBuilder.Entity<Store_Sales>().HasData(
+                new Store_Sales() { Id = 1, StoreName = "Eldorado", Phone = "079369256", Email = "eldorado@kh.com", Street = "Truda", City = "Kharkiv", State = "NorthEast", ZipCode = 6400 },
+                new Store_Sales() { Id = 2, StoreName = "Foxtrot", Phone = "056869636", Email = "foxtrot@kh.com", Street = "Rubnay", City = "Kharkiv", State = "NorthEast", ZipCode = 6400 }
+                );
+            #endregion
+
+            #region StockSeed
+            modelBuilder.Entity<Stock_Prod>().HasData(
+                new Stock_Prod() {StoreId =1, ProductId = 1, Quantity = 1020 },
+                new Stock_Prod() {StoreId =2, ProductId = 2, Quantity = 2100 }
+                );
+            #endregion
+
+            #region ProductSeed
+            modelBuilder.Entity<Product_Prod>().HasData(
+                new Product_Prod() {Id = 1, ProductName = "Water Ball 25x8", BrandId =1, CategoryId = 1, ModelYear = 2019, ListPrice = 25.21m },
+                new Product_Prod() {Id = 2, ProductName = "Footbal Ball 13n8", BrandId =2, CategoryId = 2, ModelYear = 2020, ListPrice = 80.99m }
+                );
+            #endregion
+
+            #region CategorySeed
+            modelBuilder.Entity<Category_Prod>().HasData(
+                new Category_Prod() {Id =1, CategoryName = "Swimming" },
+                new Category_Prod() {Id =2, CategoryName = "Foorball" }
+                );
+            #endregion
+
+            #region BrandSeed
+            modelBuilder.Entity<Brand_Prod>().HasData(
+                new Brand_Prod() { Id = 1, BrandName = "Speedo" },
+                new Brand_Prod() { Id = 2, BrandName = "Arena" }
+                );
+            #endregion
         }
     }
 }

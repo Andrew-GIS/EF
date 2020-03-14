@@ -19,11 +19,10 @@ namespace Model.Entity
 
         public bool Active { get; set; }
 
-        public int StoreId { get; set; }
-
-        public int ManagerId { get; set; }
+        public int? ManagerId { get; set; }
 
         public ObservableCollection<Order_Sales> Orders { get; set; }
+        public int? StoreId { get; set; }
 
         public Store_Sales Store { get; set; }
     }

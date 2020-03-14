@@ -9,7 +9,7 @@ namespace Model.Entity
     {
         public int Id { get; set; }
 
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
         public string OrderStatus { get; set; }
 
