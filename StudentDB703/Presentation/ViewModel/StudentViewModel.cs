@@ -10,14 +10,16 @@ namespace Presentation.ViewModel
     public class StudentViewModel : ViewModelBase.ViewModelBase
     {
         private ObservableCollection<Student> students;
+
         private Student selectedStudent;
+
         private readonly IStudentService studentService;
-        //private ObservableCollection<Book> books;
+
+        private ObservableCollection<Book> books;
+
         private Book selectedBook;
+
         private int booksCount;
-        //private ObservableCollection<Address> addresses;
-        private Address selectedAddress;
-        
 
         public StudentViewModel(IStudentService studentService)
         {
@@ -72,11 +74,9 @@ namespace Presentation.ViewModel
             {
                 this.selectedStudent = value;
                 this.BooksCount = SelectedStudent.Books.Count;
-                //SelectedAddress = selectedAddress;
                 OnPropertyChanged();
             }
         }
-
 
         public Book SelectedBook
         {
@@ -88,7 +88,7 @@ namespace Presentation.ViewModel
             }
         }
 
-        public int  BooksCount
+        public int BooksCount
         {
             get { return this.booksCount; }
             set
@@ -98,21 +98,10 @@ namespace Presentation.ViewModel
             }
         }
 
-        public Address SelectedAddress
-        {
-            get { return this.selectedAddress; }
-            set
-            {
-                this.selectedAddress = value;
-                OnPropertyChanged();
-            }
-        }
-
         public DelegateCommand.DelegateCommand GetStudentsCommmand { get; }
 
         public DelegateCommand.DelegateCommand SaveStudentsCommand { get; }
 
         public DelegateCommand.DelegateCommand DeleteStudentsCommand { get; }
-
     }
 }

@@ -11,6 +11,7 @@ namespace DAL.Model
         public string Author { get; set; }
         public int Year { get; set; }
 
+        public int StudentId { get; set; }
         public Student Student { get; set; }
 
         public override string ToString()

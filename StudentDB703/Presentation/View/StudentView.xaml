@@ -91,21 +91,16 @@
         </StackPanel>
 
         <StackPanel Grid.Column="3" Margin="5,5,5,5">
-            <Label Content="Address:"/>
-            <ListView ItemsSource="{Binding SelectedStudent.Address}"
-                      SelectedItem="{Binding SelectedAddress}"
-                      Height="100"
-                      Width="106"
-                      HorizontalAlignment="Left">
-            </ListView>
+            <Label Content="Address Info:"/>
+            
             <Label Content="City"/>
-            <TextBox Text="{Binding  SelectedAddress.City}" Width="150" HorizontalAlignment="Left" Margin="5"/>
+            <TextBox Text="{Binding  SelectedStudent.Address.City}" Width="150" HorizontalAlignment="Left" Margin="5"/>
             <Label Content="Country"/>
-            <TextBox Text="{Binding SelectedAddress.Country}" Width="150" HorizontalAlignment="Left" Margin="5"/>
+            <TextBox Text="{Binding SelectedStudent.Address.Country}" Width="150" HorizontalAlignment="Left" Margin="5"/>
             <Label Content="Street Address"/>
-            <TextBox Text="{Binding SelectedAddress.StreetAddress}" Width="150" HorizontalAlignment="Left" Margin="5"/>
+            <TextBox Text="{Binding SelectedStudent.Address.StreetAddress}" Width="150" HorizontalAlignment="Left" Margin="5"/>
             <Label Content="Post Code"/>
-            <TextBox Text="{Binding SelectedAddress.PostalCode}" Width="150" HorizontalAlignment="Left" Margin="5"/>
+            <TextBox Text="{Binding SelectedStudent.Address.PostalCode}" Width="150" HorizontalAlignment="Left" Margin="5"/>
         </StackPanel>
 
     </Grid>
