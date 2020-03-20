@@ -3,10 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:View"
+        xmlns:viewmodel ="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:view="clr-namespace:View.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TabControl Margin="0,0,0,-65" Grid.RowSpan="2">
+            <TabItem Grid.Column="0" Grid.Row="0" x:Name="adminPage" Header="AdminPage" >
+                <Grid>
+                    <view:AdminPage/>
+                </Grid>
+                <!--<view:AdminPage Margin="10,10,10,50" DataContext ="viewmodel:CustomerViewModel"></view:AdminPage>-->
+                <!--<view:AdminPage DataContext ="viewmodel:CustomerViewModel" Margin="10,10,10,50"/ DataContext="viewmodel:ProductViewModel">-->
+            </TabItem>
+            <TabItem Header="Product Page">
+                
+                <view:ProductPage Height="548"/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

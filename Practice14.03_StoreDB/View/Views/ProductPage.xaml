@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="View.Views.ProductPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prodviewmodel ="clr-namespace:ViewModel;assembly=ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1100">
+    <UserControl.DataContext>
+        <prodviewmodel:ProductViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="50">
+            <Label Content="List of Products"></Label>
+            <ListView ItemsSource="{Binding Path=Products}" SelectedItem="{Binding SelectedPoduct}" Height="300" FontSize="30"></ListView>
+            
+        </StackPanel>
+
+        <GroupBox Header="Product Info" Grid.Row="0" Grid.Column="1" Margin="50">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Content=" Product ID" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></Label>
+                <Label Content=" Category" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
+                <Label Content=" Brand" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="2"></Label>
+                <Label Content=" Model Year" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="3"></Label>
+                <Label Content=" Price" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="4"></Label>
+                <Label Content=" Quantity" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="5"></Label>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin ="15" Text="{Binding SelectedPoduct.Id}" FontSize="20"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin ="15" Text="{Binding SelectedPoduct.Category.CategoryName}" FontSize="20"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="2" Margin ="15" Text="{Binding SelectedPoduct.Brand.BrandName}" FontSize="20"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="3" Margin ="15" Text="{Binding SelectedPoduct.ModelYear}" FontSize="20"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="4" Margin ="15" Text="{Binding SelectedPoduct.ListPrice}" FontSize="20"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="5" Margin ="15" Text="{Binding SelectedPoduct.Stocks}" FontSize="20"></TextBox>
+                <!--<TextBox Grid.Column="1" Grid.Row="5" Margin ="15" Text="{Binding SelectedPoduct.Stocks}"></TextBox>-->
+                
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

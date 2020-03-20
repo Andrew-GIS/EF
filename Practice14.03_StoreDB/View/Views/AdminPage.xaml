@@ -1,0 +1,228 @@
+﻿<UserControl x:Class="View.Views.AdminPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             
+             xmlns:local="clr-namespace:View"
+             xmlns:viewmodel="clr-namespace:ViewModel;assembly=ViewModel"
+             
+             mc:Ignorable="d" d:DesignWidth="1100" Height="660">
+
+    <UserControl.DataContext>
+        <viewmodel:CustomerViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="2" Orientation="Vertical">
+            <Label  Content="List of Customers"></Label>
+            <ListView  Margin="10" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}" Height="250"></ListView>
+            <Button Content="Get Customer" Margin="10,5" Command="{Binding GetCustomerCommand }"/>
+        </StackPanel>
+
+        <StackPanel Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="20">
+
+            <Label Content="Customer Info"></Label>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Customer ID"></Label>
+                <TextBox Width="100" Margin="5" Text="{Binding SelectedCustomer.Id}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <GroupBox  Header="Name Info" Margin="10" Width="232">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="FirstName" VerticalAlignment="Center"></Label>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Width="100" Text="{Binding SelectedCustomer.FirstName}" MaxHeight="15"></TextBox>
+                        <Label Grid.Row="1" Grid.Column="0" Content="LastName" VerticalAlignment="Center"></Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Width="100" Text="{Binding SelectedCustomer.LastName}" MaxHeight="15"></TextBox>
+
+                    </Grid>
+                </GroupBox>
+                <GroupBox  Header="Address Info" Margin="10" Width="240">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="City"></Label>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Width="100" Text="{Binding SelectedCustomer.City}"></TextBox>
+                        <Label Grid.Row="1" Grid.Column="0" Content="State"></Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Width="100" Text="{Binding SelectedCustomer.State}"></TextBox>
+                        <Label Grid.Row="2" Grid.Column="0" Content="Zip Code"></Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Width="100" Text="{Binding SelectedCustomer.State}"></TextBox>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+
+            <GroupBox  Header="Contact Info">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="5*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Phone" Grid.ColumnSpan="2" Margin="0,0,0,28" Grid.RowSpan="2"></Label>
+                    <TextBox Grid.Row="0" Grid.Column="2" Margin="5" Width="200" HorizontalAlignment="Left" Text="{Binding SelectedCustomer.Phone}"></TextBox>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Email" Grid.ColumnSpan="2"></Label>
+                    <TextBox Grid.Row="1" Grid.Column="2" Margin="5" Width="200" HorizontalAlignment="Left" Text="{Binding SelectedCustomer.Email}"></TextBox>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+
+        <StackPanel Grid.RowSpan="2" Grid.Column="3" Orientation="Vertical">
+            <Label Content="List of Order"></Label>
+            <ListView Margin="20" ItemsSource="{Binding Path=SelectedCustomer.Orders}" SelectedItem="{Binding SelectedOrder}" Height="250"></ListView>
+
+        </StackPanel>
+
+        <GroupBox Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Header="Order Info" Margin="5,20">
+            <StackPanel Orientation="Vertical" Height="200">
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                    <Label Content=" Order ID"></Label>
+                    <TextBox Margin="5" Width="150" Text="{Binding SelectedOrder.Id}"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content=" Customer Id"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedOrder.CustomerId}" Width="150" Margin="5"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content=" Order Status"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedOrder.OrderStatus}" Margin="5"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content=" Requred Date"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedOrder.RequiredDate}" Margin="5"/>
+                        <Label Grid.Row="3" Grid.Column="0" Content=" Shipped Date"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedOrder.ShippedDate}" Margin="5"/>
+                        <Label Grid.Row="4" Grid.Column="0" Content=" Store ID"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedOrder.StoreId}" Margin="5"/>
+                        <Label Grid.Row="5" Grid.Column="0" Content=" Staff ID"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedOrder.StaffId}" Margin="5"/>
+
+                        <!--<Label Grid.Row="0" Grid.Column="2" Content=" Product Id"/>
+                        <ListView Grid.Row="0" Grid.Column="3" ItemsSource="{Binding SelectedOrder.OrderItems}" Width="150" Margin="5"/>
+                        <Label Grid.Row="1" Grid.Column="2" Content=" Quantity"/>
+                        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SelectedOrder.OrderItems.Quantity}" Width="150" Margin="5"/>
+                        <Label Grid.Row="2" Grid.Column="2" Content=" List price"/>
+                        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding SelectedOrder}" Width="150" Margin="5"/>
+                        <Label Grid.Row="3" Grid.Column="2" Content=" Discount"/>
+                        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding SelectedOrder.OrderItems.Discount}" Width="150" Margin="5"/>-->
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Store Info" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content=" Store ID"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedOrder.Store.Id}" Width="150" Margin="5"/>
+                <Label Grid.Row="1" Grid.Column="0" Content=" Store Name"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedOrder.Store.StoreName}" Width="150" Margin="5"/>
+                <Label Grid.Row="2" Grid.Column="0" Content=" Phone"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedOrder.Store.Phone}" Width="150" Margin="5"/>
+                <Label Grid.Row="3" Grid.Column="0" Content=" Email"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedOrder.Store.Email}" Width="150" Margin="5"/>
+                <Label Grid.Row="0" Grid.Column="2" Content=" Street Name"/>
+                <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding SelectedOrder.Store.Street}" Width="150" Margin="5"/>
+                <Label Grid.Row="1" Grid.Column="2" Content=" City"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SelectedOrder.Store.City}" Width="150" Margin="5"/>
+                <Label Grid.Row="2" Grid.Column="2" Content=" State"/>
+                <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding SelectedOrder.Store.State}" Width="150" Margin="5"/>
+                <Label Grid.Row="3" Grid.Column="2" Content=" Zip Code"/>
+                <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding SelectedOrder.Store.ZipCode}" Width="150" Margin="5"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Staff Info" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content=" Staff ID"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedOrder.Staff.Id}" Width="150" Margin="5"/>
+                <Label Grid.Row="1" Grid.Column="0" Content=" First Name"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedOrder.Staff.FirstName}" Width="150" Margin="5"/>
+                <Label Grid.Row="2" Grid.Column="0" Content=" Last Name"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedOrder.Staff.LastName}" Width="150" Margin="5"/>
+                <Label Grid.Row="3" Grid.Column="0" Content=" Active" />
+                <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding SelectedOrder.Staff.Active}" HorizontalAlignment="Left" Margin="150,5,0,5" Width="23"/>
+                <Label Grid.Row="0" Grid.Column="2" Content=" Email"/>
+                <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding SelectedOrder.Staff.Email}" Width="150" Margin="5"/>
+                <Label Grid.Row="1" Grid.Column="2" Content=" Phone"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SelectedOrder.Staff.Phone}" Width="150" Margin="5"/>
+                <Label Grid.Row="2" Grid.Column="2" Content=" Store ID"/>
+                <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding SelectedOrder.Staff.StoreId}" Width="150" Margin="5"/>
+                <Label Grid.Row="3" Grid.Column="2" Content=" Manager ID"/>
+                <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding SelectedOrder.Staff.ManagerId}" Width="150" Margin="5"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

@@ -14,4 +14,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="E:\SoftDevEducation\EF\MvvmExample-master\src\Presentation\Presentation.csproj" />
+  </ItemGroup>
+
 </Project>
