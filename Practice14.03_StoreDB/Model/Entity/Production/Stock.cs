@@ -18,7 +18,7 @@ namespace Model.Entity
 
         public override string ToString()
         {
-            return $"{Quantity} items";
+            return $"{this.Quantity} items";
         }
     }
 }

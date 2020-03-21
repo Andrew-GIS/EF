@@ -71,10 +71,5 @@ namespace ViewModel
             this.Customers = this.customerService.GetCustomer().ToObservableCollection();
             this.Orders = this.customerService.GetOrder().ToObservableCollection();
         }
-
-        private void ExecuteGetCustomer()
-        {
-            this.Customers = this.customerService.GetCustomer().ToObservableCollection();
-        }
     }
 }
