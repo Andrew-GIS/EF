@@ -1,0 +1,19 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="clr-namespace:View.Views"
+        mc:Ignorable="d"
+        Title="Shop Window" Height="750" Width="1200">
+    <Grid>
+        <TabControl Margin="10,0,10,10">
+            <TabItem Header="AdminPage" >
+                <view:AdminPage Margin="20,0,20,0" Height="667"/>
+            </TabItem>
+            <TabItem Header="Product Page">
+                <view:ProductPage Height="600" Margin="50"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
