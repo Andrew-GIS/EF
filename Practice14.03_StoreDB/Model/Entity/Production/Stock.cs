@@ -6,7 +6,6 @@ namespace Model.Entity
 {
     public class Stock
     {
-
         public int StoreId { get; set; }
 
         public Store Store { get; set; }
@@ -16,5 +15,10 @@ namespace Model.Entity
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Quantity} items";
+        }
     }
 }

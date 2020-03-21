@@ -68,23 +68,13 @@ namespace ViewModel
         public CustomerViewModel()
         {
             this.customerService = new CustomerService();
-           
             this.Customers = this.customerService.GetCustomer().ToObservableCollection();
             this.Orders = this.customerService.GetOrder().ToObservableCollection();
-            //GetCustomerCommand = new DelegateCommand.DelegateCommand(ExecuteGetCustomer);
-            
         }
-
-        public DelegateCommand.DelegateCommand GetCustomerCommand { get; }
 
         private void ExecuteGetCustomer()
         {
             this.Customers = this.customerService.GetCustomer().ToObservableCollection();
         }
-
-        //public void GetOrder()
-        //{
-        //    this.Orders = this.customerService.GetOrder().ToObservableCollection();
-        //}
     }
 }

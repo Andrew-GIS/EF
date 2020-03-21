@@ -10,7 +10,7 @@ namespace Model
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"database = SomeStoreDB14.3-version2; Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"database = SomeStoreDB; Trusted_Connection=true");
         }
 
         public DbSet<Customer> Customers { get; set; }
@@ -349,11 +349,32 @@ namespace Model
                     Id = 2,
                     CustomerId = 2,
                     OrderStatus = "In Processing",
-                    OrderDate = new DateTime(2020, 03, 01),
+                    OrderDate = new DateTime(2020, 3, 01),
                     RequiredDate = new DateTime(2020, 4, 1),
-                    ShippedDate = new DateTime(2020, 03, 19),
+                    ShippedDate = new DateTime(2020, 3, 19),
                     StoreId = 2, 
-                    StaffId = 2 });
+                    StaffId = 2 },
+                new Order()
+                {
+                    Id = 3,
+                    CustomerId = 1,
+                    OrderStatus = "In Processing",
+                    OrderDate = new DateTime(2019, 1, 03),
+                    RequiredDate = new DateTime(2020, 01, 29),
+                    ShippedDate = new DateTime(2020, 02, 02),
+                    StoreId = 2,
+                    StaffId = 2},
+                new Order()
+                {
+                    Id = 4,
+                    CustomerId = 2,
+                    OrderStatus = "In Delivered",
+                    OrderDate = new DateTime(2018, 3, 03),
+                    RequiredDate = new DateTime(2020, 4, 13),
+                    ShippedDate = new DateTime(2020, 6, 29),
+                    StoreId = 1,
+                    StaffId = 1
+                });
             #endregion
 
             #region OrderItemSeed
@@ -379,7 +400,7 @@ namespace Model
                     LastName="Kramorenko",
                     Email = "n.kramorenko@intetics.com",
                     Phone = "0502631248",
-                    Active = true,
+                    Active = false,
                     StoreId = 1,
                     ManagerId = 1},
                 new Staff() {

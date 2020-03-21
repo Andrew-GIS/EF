@@ -14,8 +14,6 @@ namespace ViewModel
     {
         private readonly IProductService productService;
 
-        //public DelegateCommand.DelegateCommand GetProductCommand { get; }
-
         private ObservableCollection<Product> products;
 
         private Product selectedProduct;
@@ -46,27 +44,6 @@ namespace ViewModel
         {
             this.productService = new ProductService();
             this.Products = this.productService.GetProduct().ToObservableCollection();
-            
         }
-
-        private void ExecuteGetProduct()
-        {
-            this.Products = this.productService.GetProduct().ToObservableCollection();
-        }
-
-        //public ProductViewModel(IProductService productService)
-        //{
-        //    if (productService == null) throw new ArgumentException(nameof(productService));
-
-        //    this.productService = productService;
-        //    Products = new ObservableCollection<Product>();
-        //    GetProduct();
-        //}
-
-
-        //public void GetProduct()
-        //{
-        //    this.Products = this.productService.GetProduct().ToObservableCollection();
-        //}
     }
 }

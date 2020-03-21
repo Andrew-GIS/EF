@@ -9,7 +9,7 @@
     <UserControl.DataContext>
         <prodviewmodel:ProductViewModel/>
     </UserControl.DataContext>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -17,40 +17,90 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" Margin="50">
-            <Label Content="List of Products"></Label>
+            <Label Content="List of Products" FontSize="20"></Label>
             <ListView ItemsSource="{Binding Path=Products}" SelectedItem="{Binding SelectedPoduct}" Height="300" FontSize="30"></ListView>
-            
+
         </StackPanel>
 
         <GroupBox Header="Product Info" Grid.Row="0" Grid.Column="1" Margin="50">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label Content=" Product ID" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></Label>
-                <Label Content=" Category" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
-                <Label Content=" Brand" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="2"></Label>
-                <Label Content=" Model Year" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="3"></Label>
-                <Label Content=" Price" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="4"></Label>
-                <Label Content=" Quantity" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Column="0" Grid.Row="5"></Label>
-                <TextBox Grid.Column="1" Grid.Row="0" Margin ="15" Text="{Binding SelectedPoduct.Id}" FontSize="20"></TextBox>
-                <TextBox Grid.Column="1" Grid.Row="1" Margin ="15" Text="{Binding SelectedPoduct.Category.CategoryName}" FontSize="20"></TextBox>
-                <TextBox Grid.Column="1" Grid.Row="2" Margin ="15" Text="{Binding SelectedPoduct.Brand.BrandName}" FontSize="20"></TextBox>
-                <TextBox Grid.Column="1" Grid.Row="3" Margin ="15" Text="{Binding SelectedPoduct.ModelYear}" FontSize="20"></TextBox>
-                <TextBox Grid.Column="1" Grid.Row="4" Margin ="15" Text="{Binding SelectedPoduct.ListPrice}" FontSize="20"></TextBox>
-                <TextBox Grid.Column="1" Grid.Row="5" Margin ="15" Text="{Binding SelectedPoduct.Stocks}" FontSize="20"></TextBox>
-                <!--<TextBox Grid.Column="1" Grid.Row="5" Margin ="15" Text="{Binding SelectedPoduct.Stocks}"></TextBox>-->
-                
+                <Label Content=" Product ID"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"/>
+                <Label Content=" Category"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Grid.Column="0" 
+                       Grid.Row="1"/>
+                <Label Content=" Brand"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Grid.Column="0"
+                       Grid.Row="2"/>
+                <Label Content=" Model Year"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Grid.Column="0"
+                       Grid.Row="3"/>
+                <Label Content=" Price"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20" 
+                       Grid.Column="0"
+                       Grid.Row="4"/>
+                <Label Content=" Quantity"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Grid.Column="0"
+                       Grid.Row="5"/>
+                <TextBox Grid.Column="1"
+                         Grid.Row="0"
+                         Margin ="15"
+                         Text="{Binding SelectedPoduct.Id}" 
+                         FontSize="20"/>
+                <TextBox Grid.Column="1"
+                         Grid.Row="1"
+                         Margin ="15"
+                         Text="{Binding SelectedPoduct.Category.CategoryName}"
+                         FontSize="20"/>
+                <TextBox Grid.Column="1"
+                         Grid.Row="2"
+                         Margin ="15"
+                         Text="{Binding SelectedPoduct.Brand.BrandName}"
+                         FontSize="20"/>
+                <TextBox Grid.Column="1"
+                         Grid.Row="3"
+                         Margin ="15"
+                         Text="{Binding SelectedPoduct.ModelYear}"
+                         FontSize="20"/>
+                <TextBox Grid.Column="1"
+                         Grid.Row="4"
+                         Margin ="15" 
+                         Text="{Binding SelectedPoduct.ListPrice}" 
+                         FontSize="20"/>
+                <ListBox Grid.Row="5"
+                         Grid.Column="2"
+                         Margin ="15" 
+                         ItemsSource="{Binding SelectedPoduct.Stocks}"
+                         FontSize="20"/>
             </Grid>
         </GroupBox>
     </Grid>
